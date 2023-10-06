@@ -1,0 +1,47 @@
+plugins {
+    id("java-library")
+    id("net.minecrell.plugin-yml.paper") version "0.6.0"
+}
+
+group = "cloud.grabsky"
+version = "1.${System.getenv("GITHUB_RUN_NUMBER") ?: "dev"}"
+
+repositories {
+    maven { url = "https://jitpack.io" }
+    maven { url = "https://papermc.io/repo/repository/maven-public/" }
+    maven { url = "https://repo.extendedclip.com/content/repositories/placeholderapi/" }
+    maven {
+        url = "https://maven.pkg.github.com/LuaLink/LuaLink"
+        credentials {
+            username = project.findProperty("GITHUB_ACTOR") ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("GITHUB_TOKEN") ?: System.getenv("GITHUB_TOKEN")
+        }
+    }
+}
+
+dependencies {
+    compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("me.clip:placeholderapi:2.11.3")
+    compileOnly("xyz.galaxyy.lualink:lualink:1.20.1-31")
+}
+
+tasks {
+    jar {
+        archiveFileName = "${rootProject.name}-${project.version}.jar"
+    }
+    compileJava {
+        options.fork = true
+        // Setting compatibility to Java 17 (above should work too).
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
+
+paper {
+    main = "cloud.grabsky.addons.placeholderapi.LuaLinkPlaceholderAPI"
+    apiVersion = "1.20"
+    serverDependencies {
+        "LuaLink" { load = "BEFORE"; required = true }
+        "PlaceholderAPI" { load = "BEFORE"; required = true }
+    }
+}
