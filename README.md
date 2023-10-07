@@ -83,4 +83,4 @@ $ ./gradlew clean assemble
 <br />
 
 ### Contributing
-This project is open for contributions. Help in regards of improving performance, adding new features or fixing bugs is greatly appreciated.
+This project is open for contributions. Any kind of help is greatly appreciated.
