@@ -1,3 +1,11 @@
+> [!CAUTION]
+> **This repository is no longer maintained.**  
+> With the release of **[LuaLink v2](https://github.com/LuaLink/LuaLinkV2)**, this addon is no longer necessary.
+> 
+> Check **[Dependencies](https://lualink.github.io/docs/dependencies/)** section in documentation to learn more about accessing plugin APIs.
+
+<br />
+
 # LuaLink-PlaceholderAPI
 **[LuaLink](https://github.com/LuaLink/LuaLink)** addon which brings support for some basic PlaceholderAPI functionality.
 
